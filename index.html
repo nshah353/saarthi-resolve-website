@@ -179,13 +179,88 @@ h1{font-size:clamp(2.65rem,6vw,5rem);line-height:1.04;max-width:800px;margin:18p
   <div style="font-size:.82rem;color:#b8d9d0;text-transform:uppercase;letter-spacing:.12em">Business Address</div>
   <p>C/O Ascend Coworks Private Limited, B-205-206, Dhanashree Heights, Near Domino's Pizza, Andheri West, Mumbai - 400058, Maharashtra, India</p>
   <p style="margin-top:8px">Working Hours: Monday to Friday, 10:00 AM – 5:30 PM</p>
-  <div style="margin-top:24px">
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCowI1Eq3VxM6gOnVKbc0QRMJDcVETct4ULowiReY49IaFkw/viewform"
-     target="_blank"
-     style="display:inline-block;background:#1f6c68;color:#fff;padding:14px 24px;border-radius:4px;text-decoration:none;font-weight:700">
+  <!-- RAISE A SERVICE REQUEST BUTTON AND POPUP -->
+<div style="margin-top:24px">
+  <button type="button" onclick="document.getElementById('serviceRequestPopup').style.display='flex'"
+    style="background:#1f6c68;color:#fff;padding:14px 24px;border:0;border-radius:4px;font-weight:700;cursor:pointer">
     Raise a Service Request
-  </a>
+  </button>
 </div>
+
+<!-- POPUP WINDOW -->
+<div id="serviceRequestPopup"
+  style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:20px;box-sizing:border-box">
+
+  <div style="background:#fffdf6;color:#263c3a;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px;border-radius:8px;box-sizing:border-box;position:relative">
+
+    <button type="button"
+      onclick="document.getElementById('serviceRequestPopup').style.display='none'"
+      aria-label="Close form"
+      style="position:absolute;right:16px;top:12px;background:none;border:0;font-size:28px;cursor:pointer;color:#1f6c68">
+      &times;
+    </button>
+
+    <h2 style="color:#1f6c68;margin:0 35px 8px 0">Raise a Service Request</h2>
+    <p style="margin:0 0 22px;color:#555">Please share your details so Saarthi Resolve can understand your requirement.</p>
+
+    <form id="serviceRequestForm">
+
+      <label for="srName">Full Name *</label>
+      <input id="srName" name="fullName" type="text" required
+        style="width:100%;padding:11px;margin:7px 0 16px;box-sizing:border-box">
+
+      <label for="srMobile">Mobile Number *</label>
+      <input id="srMobile" name="mobile" type="tel" required
+        pattern="[0-9+\-\s()]{8,20}" title="Enter a valid mobile number"
+        style="width:100%;padding:11px;margin:7px 0 16px;box-sizing:border-box">
+
+      <label for="srEmail">Email Address *</label>
+      <input id="srEmail" name="email" type="email" required
+        style="width:100%;padding:11px;margin:7px 0 16px;box-sizing:border-box">
+
+      <label for="srService">Service Required *</label>
+      <select id="srService" name="service" required
+        style="width:100%;padding:11px;margin:7px 0 16px;box-sizing:border-box">
+        <option value="">Select a service</option>
+        <option>EPFO/PF/Pension</option>
+        <option>Transmission</option>
+        <option>IEPF</option>
+        <option>Investor Grievances</option>
+        <option>Insurance Grievances</option>
+        <option>Other</option>
+      </select>
+
+      <label for="srDescription">Briefly Describe Your Requirement *</label>
+      <textarea id="srDescription" name="description" rows="4" required
+        style="width:100%;padding:11px;margin:7px 0 16px;box-sizing:border-box;resize:vertical"></textarea>
+
+      <label for="srContact">Preferred Contact Method *</label>
+      <select id="srContact" name="contactMethod" required
+        style="width:100%;padding:11px;margin:7px 0 22px;box-sizing:border-box">
+        <option value="">Select a contact method</option>
+        <option>WhatsApp</option>
+        <option>Phone Call</option>
+        <option>Email</option>
+      </select>
+
+      <button type="submit"
+        style="width:100%;background:#1f6c68;color:white;padding:14px;border:0;border-radius:4px;font-weight:bold;cursor:pointer">
+        Submit Request
+      </button>
+
+      <p style="font-size:12px;color:#666;margin-top:12px">Fields marked * are mandatory.</p>
+
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById('serviceRequestForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  alert('The popup form is ready, but submission is not connected yet. Please do not publish it for customers until we connect the form to a secure submission service.');
+});
+</script>
+<!-- END SERVICE REQUEST POPUP -->
 </div>
       </div>
       <div class="contact-actions">
