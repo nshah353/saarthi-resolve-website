@@ -311,11 +311,16 @@ async function submitServiceRequest(event) {
   };
 
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbyZwDAiWJ9tMOyllUjVXy4SIIQqKhtY4rtfFgACKwJYBSU6qYALCEGgeZUXAKUNioo4/exec', {
-      method: 'POST',
-      body: new URLSearchParams(data)
-    });
-
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbyZwDAiWJ9tMOyllUjVXy4SIIQqKhtY4rtfFgACKwJYBSU6qYALCEGgeZUXAKUNioo4/exec',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=UTF-8'
+          },
+          body: JSON.stringify(data)
+        }
+      );
     document.getElementById('serviceRequestPopup').style.display = 'none';
     form.reset();
     alert('Thank you! Your service request has been submitted successfully.');
